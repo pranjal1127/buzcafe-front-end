@@ -1,9 +1,50 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import TopShopCard from '../../components/cards/TopShopCard'
 import Hero from '../../components/sections/Hero'
 import './allShop.css'
+import {ethers} from 'ethers';
+import { Link, useParams } from "react-router-dom";
+import { logEvents } from '../../components/LogEvents';
+import { CATEGORY } from '../../Constant';
 
-function index() {
+function AllShop() {
+  const {category} = useParams();
+  const [spin, setSpin] = useState(true);
+  const [details, setDetails] = useState([]);
+  const [error, setError] = useState(false);
+  // console.log("category :", category);
+  const fetchDetails = async () => {
+    let data = [];
+    if(category) data = await logEvents(window.buzcafeInst,"AddShop",[null,ethers.utils.formatBytes32String(category)])
+    else  data = await logEvents(window.buzcafeInst,"AddShop",[null,null])
+
+    const detailsAll = await Promise.all(
+      data.map(async (ele) => {
+        const shop = await window.buzcafeInst.Shops(ele.args[0]);
+        return [ele.args[0],...shop];
+      })
+    );
+    console.log(detailsAll);
+    setDetails(detailsAll);
+
+  }
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setSpin(true);
+        await fetchDetails();
+      } catch (e) {
+        // setExist(false);
+        console.log("Error", e);
+
+        setError(true);
+      }
+      setSpin(false);
+    })();
+  }, [category]);
+
+
     return (
         <> 
           <Hero/> 
@@ -17,74 +58,26 @@ function index() {
                 <div className='row' >
 
                   <div className='col-md-2' >
-                      <div className='sidebar' >
-                        <ul>
-                          <li>Wine Shop</li>
-                          <li>Wedding</li>
-                          <li>Travel</li>
-                          <li>Transpoters</li>
-                          <li>Training Institute</li>
-                          <li>Sports goods</li>
-                          <li>Sports coach</li>
-                          <li>shopping</li>
-                          <li>buzcafe news</li>
-                          <li>Buzcafe Social</li>
-                          <li>buzcafe pay</li>
-                          <li>anything on hire</li>
-                          <li>apply for loan</li>
-                          <li>auto care</li>
-                          <li>auto mobile</li>
-                          <li>b 2 b</li>
-                          <li>baby care</li>
-                          <li>banquets</li>
-                          <li>bills & recharge</li>
-                          <li>books hotels</li>
-                          <li>train</li>
-                          <li>books</li>
-                          <li>cab car rental</li>
-                          <li>caterers</li>
-                          <li>civil contractor</li>
-                          <li>courier</li>
-                          <li>daily needs</li>
-                          <li>dance & music</li>
-                          <li>florist</li>
-                          <li>educations</li>
-                          <li>pet & pet care</li>
-                          <li>playschool</li>
-                          <li>language classes</li>
+                      <div className='' >
+                        <ul className="list-group list-group-flush">
+                        {CATEGORY.map(ele => <li className='list-group-item'><Link to={"/all-shop/"+ele}>{ele}</Link></li>)}
+                          
                         </ul>
                       </div>
                   </div>
+                 {spin ?<div className="loader mx-auto">Loading...</div> :
 
                   <div className='col-md-10' >  
                     <div className='row' >
+                      {!details.length ? <div className='text-center'>No shops are there </div> : null}
 
-                       <div className='col-md-4 mb-3' >
-                         <TopShopCard src='./images/top-shop/shopping-2.jpg' name='Shop Name 1' rating={5} />
-                       </div>
+                      {details.map(ele => <Link to={"/shop/"+ele[0]} className='col-md-4 mb-3' >
+                         <TopShopCard src={ele[5]} name={ele[3]} rating={5} />
+                       </Link>)}
 
-                       <div className='col-md-4 mb-3' >
-                         <TopShopCard src='./images/top-shop/shopping-2.jpg' name='Shop Name 1' rating={5} />
-                       </div>
-
-                       <div className='col-md-4 mb-3' >
-                         <TopShopCard src='./images/top-shop/shopping-2.jpg' name='Shop Name 1' rating={5} />
-                       </div>
-
-                       <div className='col-md-4 mb-3' >
-                         <TopShopCard src='./images/top-shop/shopping-2.jpg' name='Shop Name 1' rating={5} />
-                       </div>
-
-                       <div className='col-md-4 mb-3' >
-                         <TopShopCard src='./images/top-shop/shopping-2.jpg' name='Shop Name 1' rating={5} />
-                       </div>
-
-                       <div className='col-md-4 mb-3' >
-                         <TopShopCard src='./images/top-shop/shopping-2.jpg' name='Shop Name 1' rating={5} />
-                       </div>
-                    
+                       
                     </div>  
-                  </div>
+                  </div>}
 
                 </div> 
 
@@ -94,4 +87,4 @@ function index() {
     )
 }
 
-export default index
+export default AllShop;
