@@ -2,7 +2,11 @@ import React from 'react'
 
 export default function TransactionCard(props) {
     return (
-        <div className='card shadow p-1 px-2 my-1 '>
+        <div onClick={()=>window.open(
+            `https://eraswap.info/txn/${props.transactionHash}`,
+            "",
+            "width=1001,height=650"
+                )} className='card shadow p-1 px-2 my-1 '>
             <div className='row'>
                 <div  className='col-2 my-auto align-middle'>
                     <div 
@@ -11,7 +15,8 @@ export default function TransactionCard(props) {
                 </div>
                 <div className='col-6'>
                 <h4>{props.mode == "RECEIVE" ? 'Receive from' : 'Paid to'}  </h4>
-                <p className='text-muted text-truncate'  data-toggle="tooltip" data-placement="top" title={props.address}> {props.address}</p>
+                <p className='text-muted text-truncate m-0 p-0'  data-toggle="tooltip" data-placement="top" title={props.address}> {props.address}</p>
+                {props.data != "" ? <p className='m-0 p-0 text-small text-truncate'>Message : {props.data}</p>: null}
                 </div>
 
                 <div className='col-4 my-auto text-right'>
