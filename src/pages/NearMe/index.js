@@ -15,7 +15,8 @@ function index() {
               </div>     
                       
               <div className='section__content mt-5' >
-                <div className='row' >
+                Comming Soon 
+                {/* <div className='row' >
                   
                   <div className='col-md-4 mb-4' >
                      <TopShopCard src='./images/top-shop/shopping-2.jpg' name='Shop Name 1' rating={5} />
@@ -37,7 +38,7 @@ function index() {
                      <TopShopCard src='./images/top-shop/shopping-2.jpg' name='Shop Name 1' rating={5} />
                   </div>     
 
-                </div> 
+                </div>  */}
               </div>  
 
             </div>      

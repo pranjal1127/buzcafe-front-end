@@ -20,10 +20,11 @@ function App() {
         <Switch>
           <Route path='/' component={Home} exact />
           <Route path='/all-shop' component={AllShop} exact />
+          <Route path='/all-shop/:category' component={AllShop} exact />
           <Route path='/all-service' component={AllService} exact />
           <Route path='/near-me' component={NearMe} exact />
           <Route path='/dashboard' component={Dashboard} exact />
-          <Route path='/shop' component={MyShop} exact />
+          <Route path='/shop/:address' component={MyShop} exact />
           <Route path='/scan' component={ScanPay} exact />
         </Switch>
 

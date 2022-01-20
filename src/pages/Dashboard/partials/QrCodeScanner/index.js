@@ -45,7 +45,7 @@ function QrCodeScanner(props) {
         <div className="card-body" >
         <QRCode
         id="qrCodeEl"        
-        value={props.address}
+        value={props.address && ''}
         size={256}
         lavel="H"
         includeMargin={false}

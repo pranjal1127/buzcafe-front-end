@@ -22,7 +22,7 @@ function Header() {
                <div className={`nav__menu ${navToggle ? 'show__menu' : ''}`} id="nav__menu" >
                   <ul className="nav__list grid" >
                      <li className="nav__item" > 
-                        <Link to="/dashboard#payments" className="nav__link" >
+                        <Link to="/scan" className="nav__link" >
                            <UilQrcodeScan className="nav__icon" /> Scan & Pay  
                         </Link>
                      </li> 
@@ -40,8 +40,8 @@ function Header() {
                      </li> 
 
                      <li className="nav__item" > 
-                        <Link to="/dashboard#service-details" className="nav__link" >
-                          <UilParcel  className="nav__icon" /> List My Service  
+                        <Link to="/dashboard#your-shop" className="nav__link" >
+                          <UilParcel  className="nav__icon" /> Dashboard
                         </Link>
                      </li> 
                   </ul> 
