@@ -12,7 +12,7 @@ function Footer() {
                    <div className='col-12 col-md-3 col-lg-2 mb-5 mb-lg-0 d-grid' >
                       {/* logo */}
                       <div className='footer-logo' >
-                        <img src='./images/buzcafe.png' />  
+                        <img src={process.env.PUBLIC_URL +'/images/buzcafe.png' }/>  
                       </div>
                    </div>
 
@@ -67,7 +67,7 @@ function Footer() {
                         <a className='reddit' href='#' ><UilRedditAlienAlt /></a>    
                         <a className='medium' href='#' ><UilMediumM /></a>   
                         <a className='tumblr' href='#' ><UilTumblrSquare /></a>    
-                        <a className='' href='#' ><img className='coinmarket' src='./images/icons/coinMarket.png' alt='' /></a>     
+                        <a className='' href='#' ><img className='coinmarket' src={process.env.PUBLIC_URL+ './images/icons/coinMarket.png'} alt='' /></a>     
                     </div>
                    </div>
                 </div>

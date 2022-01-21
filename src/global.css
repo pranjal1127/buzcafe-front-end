@@ -338,7 +338,7 @@ section {
   padding: 8px 10px;
   display: flex;
   align-items: center;
-  max-width: 215px;
+  max-width: 415px;
   margin-right: 18px;
 }
 .input__field input,.input__field textarea {

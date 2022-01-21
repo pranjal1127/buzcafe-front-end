@@ -44,7 +44,8 @@ export async function sendTransaction(
               }">${"  "}${res.hash}</a> `,
             });
           })
-          .catch(async () => {
+          .catch(async (error) => {
+            console.log(error);
             const add = window.wallet.address
               ? window.wallet.address
               : await window.wallet.getAddress();
@@ -52,7 +53,7 @@ export async function sendTransaction(
             try {
               await contractInstance.connect(x).estimateGas[methodName](...arg);
             } catch (e) {
-              console.log("Error is : ", e);
+              console.log("Error is : ", ethers.utils.toUtf8String(Object.values(e.body)));
               Swal.fire("Oops...!", `${e.message || e}`, "error");
             }
           });
