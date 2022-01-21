@@ -142,31 +142,7 @@ ul{
   width: 10em;
   height: 10em;
 }
-<<<<<<< HEAD
 .loader {
-=======
-loaderText,
-.loaderText:after {
-  border-radius: 50%;
-  width: 10;
-  height: 10;
-}
-.loaderText{
-  position: relative;
-  left: 0;
-  right: 0;
-  border-top: 1.1em solid #098a87;
-  border-right: 1.1em solid #098a87;
-  border-bottom: 1.1em solid #098a87;
-  border-left: 1.1em solid #fff;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-animation: load8 1.1s infinite linear;
-  animation: load8 1.1s infinite linear;
-}
-.loader, {
->>>>>>> 438212d598609848b6a64d9614326017ba6b2563
   margin: 60px auto;
   font-size: 10px;
   position: relative;
