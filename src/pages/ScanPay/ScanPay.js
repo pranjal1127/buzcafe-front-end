@@ -5,7 +5,7 @@ import QRCodeScanner from '../../components/QRCodeScanner';
 
 
 export default function ScanPay() {
-    const [scanner, setScanner] = useState(false);
+    const [scanner, setScanner] = useState(true);
     const [address,setAddress] = useState("");
     const [error,setError] = useState(false);
     const [data,setData] = useState();
