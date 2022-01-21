@@ -20,9 +20,7 @@ export default function PayTo(props) {
     )
     }
 
-    useEffect(() => {
-      const x = logEvents(window.buzcafeInst,"PayTo",[null,"0x220608Dc53c00497E8BA7e4e62f20047fd78fD86",null,null]);
-    })
+
     return (
         <div style={style.transactionBox} className="mx-auto center border border-warning rounded m-3 p-2">
 

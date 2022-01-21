@@ -30,9 +30,12 @@ function Index(props) {
   };
   const handleSubmit = async (e)=> {
     e.preventDefault();
+    const method = (props.details && props.details.length == 6 && ethers.utils.parseBytes32String(details[1]) != "" ) ?  "updateShop" :"newShop";
+    console.log(method);
+      
     await sendTransaction(
       window.buzcafeInst,
-      !(props.details && props.details.length == 6 && ethers.utils.parseBytes32String(details[1]) != "" ) ?  "updateShop" :"newShop",
+      method,
       [ethers.utils.formatBytes32String(form.Category),form.Location,form.Name,form.Contact,form.Image],
       "You are successfully listed on buzcafe"
     )

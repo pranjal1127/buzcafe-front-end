@@ -27,7 +27,9 @@ function MyShop(){
         const level1 = await window.kycdappInst.isKycLevel1(address);
         setLevel1(level1)
         if(details && details[0]){
+          console.log(address,2,ethers.utils.formatBytes32String("BUZCAFE"),details[0])
           const level2 = await window.kycdappInst.isKycApproved(address,2,ethers.utils.formatBytes32String("BUZCAFE"),details[0]);
+          console.log(level2);
           setLevel2(level2)
         }
     }
